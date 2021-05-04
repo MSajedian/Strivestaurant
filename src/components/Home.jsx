@@ -75,7 +75,12 @@ class Home extends React.Component {
                 </Row>
                 <Row className="justify-content-center mt-3">
                     <Col xs={12} md={8}>
-                        <DishComments dish={this.state.selectedDish} marginTop={0} />
+                        {(this.state.selectedDish.name==="Amatriciana" &&
+                            <p>You selected the Amatriciana dish. This dish doesn't have any comment</p>
+                        )}
+                        {(this.state.selectedDish.name!=="Amatriciana" &&
+                            <DishComments dish={this.state.selectedDish} marginTop={0} />
+                        )}
                     </Col>
                 </Row>
                 <Row className="justify-content-center mt-3">
