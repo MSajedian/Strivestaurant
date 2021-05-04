@@ -5,31 +5,24 @@ import DishComments from './DishComments'
 import ReservationForm from './ReservationForm'
 import Reservations from './Reservations'
 
-// .map
-// we need to work with the state object to keep track of which dish we selected
-// but we cannot have the state object into a functional component
-// for having a state we need a Class Component
-
-// functional components are a touch faster
-
 class Home extends React.Component {
 
-    // let's declare the INITIAL state for my component
-    // the state is an object for keeping track of things during
-    // the lifespan of our page/component
-
     state = {
-        selectedDish: items[0], // we always need to provide an initial state for our component
+        ratingLessThan5: false,
+        selectedDish: items[0], 
     }
 
-    // the state object in a react component is READ-ONLY
-    // you cannot change it directly, but only with a method calles setState
 
-    // the parameter you pass to setState will always be an object
-    // that object will be MERGED into the current state
+    componentDidUpdate() {
+        this.state.selectedDish.comments.map((comment) => {
+            console.log('comment.rating:', comment.rating)
+            if (comment.rating !== 5 && !this.state.ratingLessThan5) {
+                this.setState({ ratingLessThan5: true })
+            }
+        })
+    }
 
-    render() { // render is the ONLY REQUIRED method in a class component
-        console.log(this.props)
+    render() { 
         return (
             <Container>
                 {/* <div class="container" /> */}
@@ -75,17 +68,17 @@ class Home extends React.Component {
                 </Row>
                 <Row className="justify-content-center mt-3">
                     <Col xs={12} md={8}>
-                        {(this.state.selectedDish.name==="Amatriciana" &&
+                        {(this.state.selectedDish.name === "Amatriciana" &&
                             <p>You selected the Amatriciana dish. This dish doesn't have any comment</p>
                         )}
-                        {(this.state.selectedDish.name!=="Amatriciana" &&
+                        {(this.state.selectedDish.name !== "Amatriciana" &&
                             <DishComments dish={this.state.selectedDish} marginTop={0} />
                         )}
                     </Col>
                 </Row>
                 <Row className="justify-content-center mt-3">
                     <Col xs={12} md={8}>
-                        <ReservationForm />
+                        {(!this.state.ratingLessThan5 && <ReservationForm />)}
                     </Col>
                 </Row>
             </Container>

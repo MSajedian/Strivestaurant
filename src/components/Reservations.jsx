@@ -29,7 +29,7 @@ class Reservations extends Component {
         // then we can grab the data, we can do the expensive operations of fetch in componentDidMount
         // and finally we can present the data we fetched back to the user
 
-        console.log('you should see this console.log just once every reload')
+        // console.log('you should see this console.log just once every reload')
 
         // let's fetch our data!
         try {
@@ -39,10 +39,10 @@ class Reservations extends Component {
             })
 
             let response = await fetch('https://striveschool.herokuapp.com/api/reservation')
-            console.log(response)
+            // console.log(response)
             if (response.ok) {
                 let data = await response.json()
-                console.log(data)
+                // console.log(data)
                 this.setState({ reservations: data, isError: false, isLoading: false })
             } else {
                 console.log('houston we got an error')

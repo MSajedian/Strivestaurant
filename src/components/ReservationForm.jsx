@@ -29,7 +29,6 @@ class ReservationForm extends React.Component {
     submitReservation = async (e) => {
         // let's prevent the default browser behavior
         e.preventDefault()
-        console.log(this.state.reservation)
         try {
             let response = await fetch('https://striveschool.herokuapp.com/api/reservation',
                 {
@@ -66,7 +65,7 @@ class ReservationForm extends React.Component {
 
     handleChange = (e) => {
         let id = e.target.id
-        console.log('the field I need to change in the reservation object is', id)
+        // console.log('the field I need to change in the reservation object is', id)
         this.setState({
             reservation: {
                 ...this.state.reservation,
@@ -79,7 +78,7 @@ class ReservationForm extends React.Component {
         this.state.showForm ? this.setState({ showForm: false }) : this.setState({ showForm: true })
     }
     render() {
-        console.log('RESERVATIONFORM GOT RE-RENDERED')
+        // console.log('RESERVATIONFORM GOT RE-RENDERED')
         return (
             // React Fragment, just for wrap multiple elements out of my return statement
             <>

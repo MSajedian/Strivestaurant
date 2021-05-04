@@ -7,7 +7,6 @@ class MyNavBar extends Component {
         this.state = {message:"Welcome to the Strivestaurant"}
     }
     render() {
-        console.log(this.state.message)
         return (<Navbar bg="dark" variant="dark" expand="lg">
             <Navbar.Brand href="#home">{this.props.title} - Strive For Food</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
