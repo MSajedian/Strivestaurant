@@ -9,7 +9,7 @@ class Home extends React.Component {
 
     state = {
         ratingLessThan5: false,
-        selectedDish: items[0], 
+        selectedDish: items[0],
     }
 
 
@@ -22,13 +22,13 @@ class Home extends React.Component {
         })
     }
 
-    render() { 
+    render() {
         return (
             <Container>
                 {/* <div class="container" /> */}
                 <Row className="justify-content-center mt-3">
                     <Col xs={12} md={8}>
-                        <Reservations header={"This is a Reservations header"}/>
+                        <Reservations header={"This is a Reservations header"} />
                     </Col>
                 </Row>
                 <Row className="justify-content-center mt-3">
@@ -37,8 +37,9 @@ class Home extends React.Component {
                                 COL CONTENT
                             </div>
                         */}
-                        <h1>Welcome to Strivestaurant</h1>
-                        <p>The best pasta dishes you can find on the web!</p>
+                        {this.props.newTitle ? <h1>{this.props.newTitle}</h1> : <h1>Welcome to Strivestaurant</h1>}
+                        {this.props.newPayoff ? <p>{this.props.newPayoff}</p> : <p>The best pasta dishes you can find on the web!</p>}
+                    
                         <Carousel>
                             {
                                 // every time you do a .map in react you'll need to
