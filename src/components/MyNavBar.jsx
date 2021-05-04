@@ -7,8 +7,11 @@ class MyNavBar extends Component {
         this.state = {message:"Welcome to the Strivestaurant"}
     }
     render() {
-        return (<Navbar bg="dark" variant="dark" expand="lg">
-            <Navbar.Brand href="#home">{this.props.title} - Strive For Food</Navbar.Brand>
+        return (<Navbar bg="dark" variant="dark" expand="lg">            
+            <Navbar.Brand href="#home">
+                {this.props.title==="Strivestaurant" && <>The perfect place for pasta lovers</>}
+                {this.props.title!=="Strivestaurant" && <>Strive For Food</>}
+                </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ml-auto">
