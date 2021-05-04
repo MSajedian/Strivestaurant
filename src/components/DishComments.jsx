@@ -7,6 +7,8 @@ export default class DishComments extends Component{
         return  (
     // props.dish is the whole object
     <div className={`mt-${this.props.marginTop}`}>
+        {(this.props.dish ?
+        <>
         <h2>Comments for {this.props.dish.name}</h2>
         <ListGroup>
             {
@@ -15,6 +17,8 @@ export default class DishComments extends Component{
                 ))
             }
         </ListGroup>
+        </>
+        : <p>There is not any Dish</p>)}
     </div>
 )
         }
